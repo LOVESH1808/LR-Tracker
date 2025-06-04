@@ -57,7 +57,7 @@ model Transaction {
   description       String?
   date              DateTime
   category          String
-  receiptUrl        String
+  receiptUrl        String?
   isRecurring       Boolean            @default(false)
   recurringInterval RecurringInterval? // only used if recurring is true
   nextRecurringDate DateTime? // Next date for recurring transactions
@@ -68,7 +68,7 @@ model Transaction {
   accountId         String             
   account           Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
   createdAt   DateTime    @default(now())
-  updateAt  DateTime  @updatedAt
+  updatedAt  DateTime  @updatedAt
 
   @@index([userId])
   @@index([accountId])
